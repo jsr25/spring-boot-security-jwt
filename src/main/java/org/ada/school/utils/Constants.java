@@ -1,17 +1,11 @@
 package org.ada.school.utils;
 
-public enum Constants {
-     CLAIMS_ROLES_KEY("ada_roles"),
-     COOKIE_NAME("ada-JWT"),
-     TOKEN_DURATION_MINUTES("240");
+public interface Constants {
+     static final String CLAIMS_ROLES_KEY ="ada_roles";
+     static final String COOKIE_NAME= "ada-JWT";
 
-    private final String value;
+     static final int TOKEN_DURATION_MINUTES = 240;
 
-    Constants(String value) {
-        this.value = value;
-    }
 
-    public String getValue() {
-        return value;
-    }
+
 }

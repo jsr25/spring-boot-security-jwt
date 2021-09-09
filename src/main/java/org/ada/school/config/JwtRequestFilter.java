@@ -56,7 +56,7 @@ public class JwtRequestFilter
             {
                 Optional<Cookie> optionalCookie =
                         request.getCookies() != null ? Arrays.stream( request.getCookies() ).filter(
-                                cookie -> Objects.equals( cookie.getName(), COOKIE_NAME.getValue() ) ).findFirst() : Optional.empty();
+                                cookie -> Objects.equals( cookie.getName(), COOKIE_NAME ) ).findFirst() : Optional.empty();
 
                 String headerJwt = null;
                 if ( authHeader != null && authHeader.startsWith( "Bearer " ) )
@@ -70,7 +70,7 @@ public class JwtRequestFilter
                     Jws<Claims> claims = Jwts.parser().setSigningKey( secret ).parseClaimsJws( token );
                     Claims claimsBody = claims.getBody();
                     String subject = claimsBody.getSubject();
-                    List<String> roles  = claims.getBody().get( CLAIMS_ROLES_KEY.getValue() , ArrayList.class);
+                    List<String> roles  = claims.getBody().get( CLAIMS_ROLES_KEY , ArrayList.class);
 
                     if (roles == null) {
                         response.sendError(HttpStatus.UNAUTHORIZED.value(), "Invalid token roles");

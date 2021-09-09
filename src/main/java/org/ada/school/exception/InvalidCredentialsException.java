@@ -1,6 +1,7 @@
-package org.ada.school.error;
+package org.ada.school.exception;
 
-import org.ada.school.exception.ServerErrorResponseDto;
+import org.ada.school.error.ErrorCodeEnum;
+import org.ada.school.error.InternalServerErrorException;
 import org.springframework.http.HttpStatus;
 
 public class InvalidCredentialsException extends InternalServerErrorException {

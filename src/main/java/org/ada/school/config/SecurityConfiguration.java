@@ -27,7 +27,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .authorizeRequests()
                 .antMatchers( HttpMethod.GET, "/v1/health" ).permitAll()
                 .antMatchers( HttpMethod.POST,"/v1/auth" ).permitAll()
-                .antMatchers( HttpMethod.POST,"/v1/user" ).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS );

@@ -56,7 +56,7 @@ public class JwtRequestFilter
             {
                 Optional<Cookie> optionalCookie =
                         request.getCookies() != null ? Arrays.stream( request.getCookies() ).filter(
-                                cookie -> Objects.equals( cookie.getName(), COOKIE_NAME ) ).findFirst() : Optional.empty();
+                                cookie -> Objects.equals( cookie.getName(), COOKIE_NAME.getValue() ) ).findFirst() : Optional.empty();
 
                 String headerJwt = null;
                 if ( authHeader != null && authHeader.startsWith( "Bearer " ) )

@@ -22,7 +22,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 @RestController
-@RequestMapping( "v1/auth" )
+@RequestMapping( "/v1/auth" )
 public class AuthController {
     @Value( "${app.secret}" )
     private String secret;
@@ -63,7 +63,7 @@ public class AuthController {
     private TokenDto generateTokenDto( User user )
     {
         Calendar expirationDate = Calendar.getInstance();
-        expirationDate.add( Calendar.MINUTE, Integer.parseInt(TOKEN_DURATION_MINUTES.getValue()) );
+        expirationDate.add( Calendar.MINUTE,240 );
         String token = generateToken( user, expirationDate.getTime() );
         return new TokenDto( token, expirationDate.getTime() );
     }

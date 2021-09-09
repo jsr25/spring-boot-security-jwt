@@ -53,7 +53,7 @@ public class AuthController {
     {
         return Jwts.builder()
                 .setSubject( user.getId() )
-                .claim( CLAIMS_ROLES_KEY, user.getRoles() )
+                .claim( CLAIMS_ROLES_KEY.getValue(), user.getRoles() )
                 .setIssuedAt(new Date() )
                 .setExpiration( expirationDate )
                 .signWith( SignatureAlgorithm.HS256, secret )
@@ -63,7 +63,7 @@ public class AuthController {
     private TokenDto generateTokenDto( User user )
     {
         Calendar expirationDate = Calendar.getInstance();
-        expirationDate.add( Calendar.MINUTE, TOKEN_DURATION_MINUTES );
+        expirationDate.add( Calendar.MINUTE, Integer.parseInt(TOKEN_DURATION_MINUTES.getValue()) );
         String token = generateToken( user, expirationDate.getTime() );
         return new TokenDto( token, expirationDate.getTime() );
     }

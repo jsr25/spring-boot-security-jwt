@@ -70,7 +70,7 @@ public class JwtRequestFilter
                     Jws<Claims> claims = Jwts.parser().setSigningKey( secret ).parseClaimsJws( token );
                     Claims claimsBody = claims.getBody();
                     String subject = claimsBody.getSubject();
-                    List<String> roles  = claims.getBody().get( CLAIMS_ROLES_KEY , ArrayList.class);
+                    List<String> roles  = claims.getBody().get( CLAIMS_ROLES_KEY.getValue() , ArrayList.class);
 
                     if (roles == null) {
                         response.sendError(HttpStatus.UNAUTHORIZED.value(), "Invalid token roles");
